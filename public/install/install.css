@@ -1,0 +1,102 @@
+/* Portal SI — instalador. Usa as variáveis e os componentes de base.css e components.css. */
+
+.inst-top { padding: 18px 24px; background: var(--panel); }
+
+.inst-wrap { max-width: 660px; margin: 32px auto 48px; padding: 0 20px; }
+
+.inst-card {
+    padding: 32px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(14, 27, 61, 0.06);
+}
+
+.inst-card h2 { margin: 0 0 6px; font-size: 1.5rem; line-height: 1.3; font-weight: 700; letter-spacing: -0.01em; }
+.inst-card .sub { margin: 28px 0 10px; font-size: 1rem; font-weight: 700; }
+.inst-card code { padding: 1px 6px; font-size: 0.875em; background: #eef1f5; border-radius: 4px; }
+.lead { margin: 0 0 24px; color: var(--muted); font-size: 0.9375rem; }
+
+.inst-foot { margin: 20px 0 0; text-align: center; font-size: 0.8125rem; color: var(--muted); }
+
+/* Indicador de passos */
+.steps { display: flex; gap: 8px; margin: 0 0 20px; padding: 0; list-style: none; counter-reset: passo; }
+.step { flex: 1; display: flex; align-items: center; gap: 10px; font-size: 0.875rem; font-weight: 600; color: var(--muted); }
+.step::before {
+    counter-increment: passo;
+    content: counter(passo);
+    display: grid;
+    flex: none;
+    place-items: center;
+    width: 28px;
+    height: 28px;
+    font-size: 0.8125rem;
+    color: var(--muted);
+    background: #e3e8f1;
+    border-radius: 50%;
+}
+.step.is-current { color: var(--primary); }
+.step.is-current::before { color: #fff; background: var(--primary); }
+.step.is-done { color: var(--success); }
+.step.is-done::before { content: "\2713"; color: #fff; background: var(--success); }
+
+/* Requisitos */
+.req-list { margin: 0 0 24px; padding: 0; list-style: none; }
+.req { display: flex; align-items: flex-start; gap: 12px; padding: 12px 0; border-bottom: 1px solid var(--line); }
+.req:first-child { border-top: 1px solid var(--line); }
+.req .badge { flex: none; min-width: 72px; justify-content: center; text-align: center; }
+.req strong { display: block; font-size: 0.9375rem; }
+.req-detail { display: block; font-size: 0.8125rem; color: var(--muted); }
+
+/* Resumo do banco */
+.summary { margin: 0 0 24px; padding: 4px 16px; background: var(--page); border: 1px solid var(--line); border-radius: 8px; }
+.summary > div { display: flex; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--line); }
+.summary > div:last-child { border-bottom: 0; }
+.summary dt { flex: 0 0 96px; font-size: 0.8125rem; font-weight: 600; color: var(--muted); }
+.summary dd { margin: 0; font-size: 0.9375rem; word-break: break-word; }
+
+.hint-tight { margin-top: -12px; margin-bottom: 20px; }
+
+/* Resultado */
+.log { margin: 0 0 24px; padding-left: 20px; font-size: 0.9rem; color: var(--ink); }
+.log li + li { margin-top: 4px; }
+
+/* Links com cara de botão */
+.link-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 48px;
+    padding: 0 22px;
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: var(--primary);
+    text-decoration: none;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+}
+.link-btn:hover { border-color: #b4bdcc; background: #fafbfc; }
+.link-btn:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+.link-btn-primary { color: #fff; background: var(--primary); border-color: var(--primary); }
+.link-btn-primary:hover { color: #fff; background: var(--primary-hover); border-color: var(--primary-hover); }
+
+.form-actions-wrap { flex-wrap: wrap; align-items: center; margin-bottom: 8px; }
+.form-actions-wrap form { margin: 0; }
+.btn-auto { width: auto; margin-top: 0; padding: 0 22px; }
+
+@media (max-width: 560px) {
+    .inst-card { padding: 24px 20px; }
+    .step span { display: none; }
+    .summary > div { flex-direction: column; gap: 2px; }
+    .form-actions { flex-direction: column; }
+    .form-actions .btn, .form-actions .link-btn { width: 100%; }
+}
+
+/* Escolha do banco */
+fieldset.field { margin: 0 0 20px; padding: 0; border: 0; }
+fieldset.field legend { margin-bottom: 8px; padding: 0; font-size: 0.875rem; font-weight: 600; }
+.field .radio { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 10px; padding: 12px 16px; border: 1px solid var(--line); border-radius: 8px; font-weight: 400; cursor: pointer; }
+.field .radio input { margin-top: 4px; accent-color: var(--primary); }
+.radio-text { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.radio-detail { font-size: 0.8125rem; color: var(--muted); overflow-wrap: anywhere; }

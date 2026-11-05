@@ -1,0 +1,11 @@
+CREATE TABLE users (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    email VARCHAR(150) NOT NULL UNIQUE,
+    password_hash VARCHAR(255) NOT NULL,
+    profile_code INTEGER NOT NULL,
+    status BOOLEAN NOT NULL DEFAULT TRUE,
+    updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT fk_users_profile FOREIGN KEY (profile_code) REFERENCES user_profile(id)
+);

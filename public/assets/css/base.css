@@ -1,0 +1,82 @@
+/* ==========================================================================
+   Portal SI — base.css
+   Variáveis, reset, tipografia e marca. Carregue antes dos demais arquivos.
+   ========================================================================== */
+
+:root {
+    --ink: #16202e;
+    --muted: #5b6778;
+    --line: #d5dbe5;
+    --surface: #ffffff;
+    --page: #f3f5f9;
+
+    --primary: #2143a8;
+    --primary-hover: #1a3689;
+    --primary-soft: #e8eefb;
+
+    --panel: #0e1b3d;
+    --panel-text: #c9d3ea;
+
+    --danger: #b42318;
+    --danger-bg: #fdf1f0;
+    --success: #2e7d32;
+    --success-bg: #edf7ee;
+    --warning: #b7791f;
+    --warning-bg: #fff8e6;
+
+    --focus: #7a9bf0;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    -webkit-text-size-adjust: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: "Plus Jakarta Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    color: var(--ink);
+    background: var(--page);
+}
+
+/* ---------- Marca ---------- */
+.logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: #ffffff;
+    letter-spacing: 0.01em;
+}
+
+.logo-mark {
+    display: grid;
+    place-items: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    background: #ffffff;
+    color: var(--panel);
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+/* ---------- Acessibilidade ---------- */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        transition: none !important;
+    }
+}
+
+:root {
+    --info: #2143a8;
+    --info-bg: #eef2fb;
+}

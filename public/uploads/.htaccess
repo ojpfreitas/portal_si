@@ -1,0 +1,10 @@
+# Pasta de arquivos enviados: serve só imagens e nunca executa código
+Options -Indexes -ExecCGI
+
+<IfModule mod_authz_core.c>
+    Require all denied
+
+    <FilesMatch "\.(jpe?g|png|webp)$">
+        Require all granted
+    </FilesMatch>
+</IfModule>

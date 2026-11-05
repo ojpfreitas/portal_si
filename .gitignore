@@ -1,0 +1,20 @@
+# Configuração local: criada pelo instalador e com a senha do banco. Não versionar.
+# Os modelos config/app.example.php e config/database.example.php é que vão para o Git.
+/config/app.php
+/config/database.php
+
+# Imagens enviadas pelos usuários (só o .htaccess da pasta vai para o Git)
+/public/uploads/*
+!/public/uploads/.htaccess
+
+# Arquivos temporários do instalador
+/config/install.lock
+/config/install.key
+/config/*.bak
+/config/*.tmp*
+
+# Sistema e editores
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

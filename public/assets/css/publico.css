@@ -1,0 +1,321 @@
+/* Portal SI — publico.css (página inicial pública) */
+
+.site-header { position: relative; border-bottom: 1px solid var(--line); background: var(--surface); }
+.site-header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 16px 24px;
+}
+.site-header .logo { color: var(--ink); }
+.logo-mark-light { background: var(--panel); color: #fff; }
+
+.btn-ghost {
+    display: inline-flex;
+    align-items: center;
+    height: 40px;
+    padding: 0 18px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--ink);
+    text-decoration: none;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+}
+.btn-ghost:hover { border-color: #b4bdcc; }
+
+/* O menu em si: lado a lado no desktop, empilhado dentro do burger no mobile */
+.site-menu { display: flex; align-items: center; gap: 24px; }
+.site-menu nav { display: flex; flex-wrap: wrap; align-items: center; gap: 24px; }
+
+.nav-link,
+.nav-dropdown summary {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--ink);
+    text-decoration: none;
+}
+.nav-link:hover,
+.nav-dropdown summary:hover { color: var(--primary); }
+.nav-link:focus-visible,
+.nav-dropdown summary:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+
+/* ---------- Dropdown "Categorias" (<details>/<summary> nativos, sem JS) ---------- */
+.nav-dropdown { position: relative; }
+
+.nav-dropdown summary {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+    list-style: none;
+}
+.nav-dropdown summary::-webkit-details-marker { display: none; }
+.nav-dropdown summary::marker { content: ''; }
+
+.nav-dropdown-chevron {
+    width: 10px;
+    height: 10px;
+    color: var(--muted);
+    transition: transform 0.15s ease;
+}
+.nav-dropdown[open] .nav-dropdown-chevron { transform: rotate(180deg); }
+
+.nav-dropdown-panel {
+    position: absolute;
+    top: calc(100% + 10px);
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    min-width: 200px;
+    padding: 8px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    box-shadow: 0 12px 28px rgba(22, 32, 46, 0.12);
+}
+
+.nav-dropdown-panel a {
+    padding: 8px 10px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--ink);
+    text-decoration: none;
+    border-radius: 6px;
+    white-space: nowrap;
+}
+.nav-dropdown-panel a:hover { background: var(--primary-soft); color: var(--primary); }
+.nav-dropdown-panel a:focus-visible { outline: 2px solid var(--focus); outline-offset: -2px; }
+
+.nav-dropdown-empty { padding: 8px 10px; font-size: 0.875rem; color: var(--muted); }
+
+/* ---------- Menu "hambúrguer" (checkbox oculto, sem JS) ---------- */
+.menu-toggle {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.menu-btn {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+.menu-btn span {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: var(--ink);
+    border-radius: 2px;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+}
+.menu-btn:hover { background: #f3f5f9; }
+.menu-btn:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+
+.hero {
+    background-color: var(--panel);
+    background-image: radial-gradient(rgba(255, 255, 255, 0.07) 1px, transparent 1px);
+    background-size: 22px 22px;
+    color: #fff;
+}
+.hero-inner { max-width: 1080px; margin: 0 auto; padding: 72px 24px; }
+.hero h1 { margin: 0 0 12px; font-size: 2.25rem; font-weight: 700; letter-spacing: -0.01em; max-width: 20ch; }
+.hero p { margin: 0; font-size: 1.0625rem; color: var(--panel-text); }
+
+.section { max-width: 1080px; margin: 0 auto; padding: 48px 24px; }
+.section-title { margin: 0 0 20px; font-size: 1.25rem; font-weight: 700; }
+
+/* Grade de publicações em Flexbox: cada cartão cresce/encolhe e quebra linha sozinho */
+.cards-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.public-card {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    flex: 1 1 260px;
+    padding: 22px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+}
+.public-card h3 { margin: 4px 0; font-size: 1.0625rem; font-weight: 700; }
+.public-card p { margin: 0; color: var(--muted); font-size: 0.9rem; flex: 1; }
+.public-card-type { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; color: var(--primary); }
+.public-card-date { font-size: 0.8125rem; color: var(--muted); }
+
+.empty-state { padding: 32px; text-align: center; color: var(--muted); background: var(--surface); border: 1px dashed var(--line); border-radius: 12px; }
+
+/* O rodapé em si (.site-footer e companhia) mora em components.css,
+   porque também é usado no login/cadastro e no painel. */
+
+/* ---------- Responsividade: 1024px (tablets/notebooks pequenos) ---------- */
+@media (max-width: 1024px) {
+    .hero-inner { padding: 56px 24px; }
+    .hero h1 { font-size: 1.875rem; max-width: 26ch; }
+
+    .public-card { flex-basis: 220px; }
+}
+
+/* ---------- Responsividade: 768px (celulares e tablets em pé) ---------- */
+@media (max-width: 768px) {
+    .menu-btn { display: flex; }
+
+    .site-menu {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 4px;
+        max-height: 0;
+        overflow: hidden;
+        padding: 0 24px;
+        background: var(--surface);
+        border-bottom: 1px solid var(--line);
+        box-shadow: 0 12px 24px rgba(22, 32, 46, 0.08);
+        transition: max-height 0.25s ease, padding 0.25s ease;
+    }
+
+    .menu-toggle:checked ~ .site-menu {
+        /* Folga generosa: o acordeão de categorias some embaixo de overflow:hidden
+           se o conteúdo aberto passar desse teto. Ajuste se cadastrar muitas categorias. */
+        max-height: 70vh;
+        overflow-y: auto;
+        padding: 16px 24px 20px;
+    }
+
+    .site-menu nav { flex-direction: column; align-items: stretch; gap: 0; width: 100%; }
+    .nav-link { padding: 10px 0; }
+
+    /* Dentro do burger, o dropdown vira um acordeão: deixa de flutuar e empilha */
+    .nav-dropdown summary { padding: 10px 0; }
+    .nav-dropdown-panel {
+        position: static;
+        margin: 2px 0 6px 12px;
+        box-shadow: none;
+        border-left: 2px solid var(--line);
+        border-radius: 0;
+    }
+
+    .site-menu .btn-ghost { margin: 8px 0 16px; justify-content: center; }
+
+    /* Três tracinhos viram um "X" quando o menu está aberto */
+    .menu-toggle:checked ~ .menu-btn span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .menu-toggle:checked ~ .menu-btn span:nth-child(2) { opacity: 0; }
+    .menu-toggle:checked ~ .menu-btn span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    .hero-inner { padding: 40px 20px; }
+    .hero h1 { font-size: 1.5rem; max-width: none; }
+    .hero p { font-size: 0.9375rem; }
+
+    .section { padding: 32px 20px; }
+
+    .public-card { flex-basis: 100%; }
+}
+
+/* ==========================================================================
+   Categorias — cartões da Home e tela de cada categoria
+   ========================================================================== */
+
+.section-tight { padding-top: 0; }
+
+/* Cartões clicáveis (Home) */
+.category-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.category-card {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    flex: 1 1 220px;
+    padding: 20px;
+    color: var(--ink);
+    text-decoration: none;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease;
+}
+.category-card:hover {
+    border-color: var(--primary);
+    box-shadow: 0 8px 20px rgba(33, 67, 168, 0.1);
+    transform: translateY(-2px);
+}
+.category-card:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+
+.category-card-icon {
+    display: grid;
+    place-items: center;
+    width: 40px;
+    height: 40px;
+    margin-bottom: 6px;
+    font-size: 1.25rem;
+    color: var(--primary);
+    background: var(--primary-soft);
+    border-radius: 10px;
+}
+.category-card-name { font-size: 1.0625rem; font-weight: 700; }
+.category-card-desc { font-size: 0.875rem; color: var(--muted); }
+
+/* Tela da categoria */
+.hero-categoria .hero-inner { padding-top: 40px; padding-bottom: 48px; }
+.hero-categoria h1 { display: flex; align-items: center; gap: 14px; max-width: none; }
+.hero-icon { font-size: 0.85em; color: var(--focus); }
+
+.breadcrumb {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 20px;
+    font-size: 0.8125rem;
+    color: var(--panel-text);
+}
+.breadcrumb a { color: #fff; text-decoration: none; }
+.breadcrumb a:hover { text-decoration: underline; }
+
+/* Faixa de navegação entre categorias */
+.category-tabs { background: var(--surface); border-bottom: 1px solid var(--line); }
+.category-tabs-inner {
+    display: flex;
+    gap: 4px;
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 0 24px;
+    overflow-x: auto;
+}
+.category-tab {
+    flex: none;
+    padding: 14px 14px 12px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--muted);
+    text-decoration: none;
+    border-bottom: 2px solid transparent;
+    white-space: nowrap;
+}
+.category-tab:hover { color: var(--primary); }
+.category-tab:focus-visible { outline: 2px solid var(--focus); outline-offset: -2px; }
+.category-tab.is-active { color: var(--primary); border-bottom-color: var(--primary); }
+
+.category-tabs + .section { padding-top: 40px; }
+
+@media (max-width: 768px) {
+    .hero-categoria .hero-inner { padding-top: 28px; padding-bottom: 32px; }
+    .category-tabs-inner { padding: 0 20px; }
+    .category-card { flex-basis: 100%; }
+}
