@@ -21,7 +21,7 @@ aplicação (todas as páginas passam por `public/index.php`).
 2. **Abra o instalador** no navegador e siga os 3 passos (veja [Instalador](#instalador)):
 
    ```
-   http://localhost/portal-si/public/install/
+   http://localhost/portal_si/public/install/
    ```
 
    (ajuste o endereço conforme a pasta onde você copiou o projeto).
@@ -96,7 +96,7 @@ Ele pergunta os dados, ou aceita tudo por opções:
 
 ```
 php database/instalar.php --host=localhost --porta=5432 --banco=portal_si --usuario=postgres \
-    --senha-banco=*** --nome="Seu Nome" --email=voce@exemplo.com --senha=*** --base-url=/portal-si/public
+    --senha-banco=*** --nome="Seu Nome" --email=voce@exemplo.com --senha=*** --base-url=/portal_si/public
 ```
 
 Use `--nao-criar-banco` se o banco já existir e você não quer que ele tente criá-lo.
@@ -128,7 +128,7 @@ O `Update Database.bat` continua funcionando: o instalador e os `.bat` usam a me
 ## Estrutura
 
 ```
-portal-si
+portal_si
 ├── .gitignore            # mantém fora do Git a configuração local e os arquivos do instalador
 ├── app
 │   ├── Controllers       # uma classe por área (Auth, Categoria, Conteudo, Dashboard,
@@ -313,7 +313,7 @@ copy config\database.example.php config\database.php
 
 ### Passo a passo
 
-Os arquivos abaixo ficam na pasta `portal-si/database`. Execute-os com duplo clique
+Os arquivos abaixo ficam na pasta `portal_si/database`. Execute-os com duplo clique
 (ou pelo Prompt de Comando, de dentro dessa pasta), nesta ordem:
 
 1. **`Create Database.bat`** — pergunta porta, usuário e senha do PostgreSQL, cria o
@@ -371,7 +371,7 @@ mostrarem a versão, o `PATH` está certo.
 ## Criando o primeiro Administrador
 
 Como ninguém nasce Administrador, e só um Administrador consegue promover outra conta
-pela tela `/admin/usuarios`, execute o arquivo abaixo (na pasta `portal-si/database`)
+pela tela `/admin/usuarios`, execute o arquivo abaixo (na pasta `portal_si/database`)
 para criar o primeiro usuário com perfil Administrador. Ele também serve para
 recuperar o acesso se a senha do administrador se perder:
 
@@ -397,15 +397,15 @@ O valor é o caminho da URL (a parte depois de `http://localhost`) até a pasta
 
 | Onde o projeto está                              | Valor de `BASE_URL`                  |
 | ------------------------------------------------ | ------------------------------------ |
-| `htdocs/portal-si`                               | `/portal-si/public`                  |
-| `htdocs/teste/portal-si`                         | `/teste/portal-si/public`            |
-| `htdocs/proj_exten_IV/portal-si`                 | `/proj_exten_IV/portal-si/public`    |
+| `htdocs/portal_si`                               | `/portal_si/public`                  |
+| `htdocs/teste/portal_si`                         | `/teste/portal_si/public`            |
+| `htdocs/proj_exten_IV/portal_si`                 | `/proj_exten_IV/portal_si/public`    |
 | Virtual Host com `DocumentRoot` em `public/`     | `''` (vazio)                         |
 
 Exemplo:
 
 ```php
-define('BASE_URL', '/teste/portal-si/public');
+define('BASE_URL', '/teste/portal_si/public');
 ```
 
 ## Segurança já incluída
