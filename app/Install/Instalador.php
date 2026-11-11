@@ -486,9 +486,10 @@ final class Instalador
             return false;
         }
 
-        // $coluna vem de uma lista fixa (profile_id ou profile_code), nunca da entrada
+        // $coluna vem de uma lista fixa (profile_id ou profile_code), nunca da entrada.
+        // Só conta Administrador ativo: um inativo não consegue entrar nem aprovar contas.
         return (bool) $pdo->query(
-            'SELECT 1 FROM users WHERE ' . $coluna . ' = ' . self::PERFIL_ADMIN . ' LIMIT 1'
+            'SELECT 1 FROM users WHERE ' . $coluna . ' = ' . self::PERFIL_ADMIN . ' AND status = TRUE LIMIT 1'
         )->fetchColumn();
     }
 
