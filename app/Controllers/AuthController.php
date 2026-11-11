@@ -31,11 +31,18 @@ class AuthController extends Controller
             return;
         }
 
-        $usuario = (new Usuario())->buscarAtivoPorEmail($email);
+        $usuario = (new Usuario())->buscarPorEmail($email);
 
         // Mensagem intencionalmente genérica, para evitar enumeração de contas
         if (!$usuario || !password_verify($senha, $usuario['password_hash'])) {
             flash('erro', 'E-mail ou senha inválidos.');
+            $this->view('auth/login', ['email' => $email], 'auth');
+            return;
+        }
+
+        // A senha está correta: quem chegou aqui é o dono da conta, então o motivo da recusa pode ser explicado
+        if (!$usuario['status']) {
+            flash('aviso', 'Sua conta ainda está inativa. Aguarde a aprovação de um administrador para entrar.');
             $this->view('auth/login', ['email' => $email], 'auth');
             return;
         }

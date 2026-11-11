@@ -11,13 +11,16 @@ use PDO;
  */
 class Usuario extends Model
 {
-    /** Usado no login: só contas ativas, com o hash para conferir a senha */
-    public function buscarAtivoPorEmail(string $email): ?array
+    /**
+     * Usado no login: busca a conta pelo e-mail, ativa ou não, com o hash para conferir a senha.
+     * Quem chama confere a senha primeiro e só depois olha o status.
+     */
+    public function buscarPorEmail(string $email): ?array
     {
         $stmt = $this->db->prepare(
-            'SELECT id, name, email, password_hash, profile_id
+            'SELECT id, name, email, password_hash, profile_id, status
              FROM users
-             WHERE email = :email AND status = TRUE
+             WHERE email = :email
              LIMIT 1'
         );
         $stmt->execute([':email' => $email]);
